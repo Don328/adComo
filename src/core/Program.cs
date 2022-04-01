@@ -12,6 +12,7 @@ namespace adComo
             {
                 Console.WriteLine( $"Title: {opus.Title}");
                 Console.WriteLine( $"Id: {opus.OpusId}");
+                Console.WriteLine( $"Status: {opus.Status}");
                 Console.WriteLine();
             }
         }

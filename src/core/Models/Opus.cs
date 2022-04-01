@@ -1,4 +1,5 @@
-﻿using System;
+﻿using adComo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace adComo.Models
     {
         public int OpusId { get; set; }
         public string Title { get; set; } = string.Empty;
+        public OpusStatus Status { get; set; } = 0;
     }
 }
