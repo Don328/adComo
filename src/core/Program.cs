@@ -7,9 +7,8 @@ namespace adComo
         static async Task Main(string[] args)
         {
             await Task.Delay(1000);
-            var seed = new Seed();
-            var opera = seed.SeedOpera();
-            foreach (var opus in opera)
+            var state = new State();
+            foreach (var opus in state.Opera)
             {
                 Console.WriteLine( $"Title: {opus.Title}");
                 Console.WriteLine( $"Id: {opus.OpusId}");
