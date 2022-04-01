@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace adComo
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello");
+            await Task.Delay(1000);
+            Console.WriteLine("World");
+        }
+    }
+}
