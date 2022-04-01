@@ -11,6 +11,8 @@ namespace adComo.Data
     internal class Seed
     {
         private readonly bool isDbSeed;
+        private int opusCount = 0;
+        private int notaCount = 0;
 
         internal Seed(bool isDbSeed = false)
         {
@@ -21,88 +23,31 @@ namespace adComo.Data
         {
             var opera = new List<Opus>();
 
-            var opus = new Opus
-            {
-                OpusId = 1,
-                Title = "Task 1",
-                Status = OpusStatus.New
-            };
-
-            var opus2 = new Opus
-            {
-                OpusId = 2,
-                Title = "Task 2",
-                Status = OpusStatus.Completed
-            };
-
-            var opus3 = new Opus
-            {
-                OpusId = 3,
-                Title = "Task 3",
-                Status = OpusStatus.Active
-            };
-
-            var opus4 = new Opus
-            {
-                OpusId = 4,
-                Title = "Task 4",
-                Status = OpusStatus.Active
-            };            
-            
-            var opus5 = new Opus
-            {
-                OpusId = 5,
-                Title = "Task 5",
-                Status = OpusStatus.Active
-            };            
-            
-            var opus6 = new Opus
-            {
-                OpusId = 6,
-                Title = "Task 6",
-                Status = OpusStatus.Pending
-            };
-                        
-            var opus7 = new Opus
-            {
-                OpusId = 7,
-                Title = "Task 7",
-                Status = OpusStatus.New
-            };
-
-            var opus8 = new Opus
-            {
-                OpusId = 8,
-                Title = "Task 8",
-                Status = OpusStatus.Completed
-            };            
-            
-            var opus9 = new Opus
-            {
-                OpusId = 9,
-                Title = "Task 9",
-                Status = OpusStatus.Completed
-            };            
-            
-            var opus10 = new Opus
-            {
-                OpusId = 10,
-                Title = "Task 10",
-                Status = OpusStatus.Pending
-            };
-
-            opera.Add(opus);
-            opera.Add(opus2);
-            opera.Add(opus3);
-            opera.Add(opus4);
-            opera.Add(opus5);
-            opera.Add(opus6);
-            opera.Add(opus7);
-            opera.Add(opus8);
-            opera.Add(opus9);
-            opera.Add(opus10);
+            opera.Add(CreateOpus("Task 1"));
+            opera.Add(CreateOpus("Task 2"));
+            opera.Add(CreateOpus("Task 3"));
+            opera.Add(CreateOpus("Task 4"));
+            opera.Add(CreateOpus("Task 5"));
+            opera.Add(CreateOpus("Task 6"));
+            opera.Add(CreateOpus("Task 7"));
+            opera.Add(CreateOpus("Task 8"));
+            opera.Add(CreateOpus("Task 9"));
+            opera.Add(CreateOpus("Task 10"));
 
             return opera;
+        }
+
+        private Opus CreateOpus(string title)
+        {
+            var opus = new Opus
+            {
+                OpusId = opusCount + 1,
+                Title = title,
+                Status = OpusStatus.New
+            };
+            opusCount++;
+
+            return opus;
         }
     }
 }
