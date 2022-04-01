@@ -23,16 +23,47 @@ namespace adComo.Data
         {
             var opera = new List<Opus>();
 
-            opera.Add(CreateOpus("Task 1"));
-            opera.Add(CreateOpus("Task 2"));
-            opera.Add(CreateOpus("Task 3"));
-            opera.Add(CreateOpus("Task 4"));
-            opera.Add(CreateOpus("Task 5"));
-            opera.Add(CreateOpus("Task 6"));
-            opera.Add(CreateOpus("Task 7"));
-            opera.Add(CreateOpus("Task 8"));
-            opera.Add(CreateOpus("Task 9"));
-            opera.Add(CreateOpus("Task 10"));
+            var opus1 = CreateOpus("Task 1");
+            opus1.Status = OpusStatus.New;
+
+            var opus2 = CreateOpus("Task 2");
+            opus2.Status = OpusStatus.Active;
+            
+            var opus3 = CreateOpus("Task 3");
+            opus3.Status = OpusStatus.Active;
+            
+            var opus4 = CreateOpus("Task 4");
+            opus4.Status = OpusStatus.Pending;
+            
+            var opus5 = CreateOpus("Task 5");
+            opus5.Status = OpusStatus.Completed;
+            
+            var opus6 = CreateOpus("Task 6");
+            opus6.Status = OpusStatus.Pending;
+            
+            var opus7 = CreateOpus("Task 7");
+            opus7.Status = OpusStatus.Active;
+            
+            var opus8 = CreateOpus("Task 8");
+            opus8.Status = OpusStatus.New;
+            
+            var opus9 = CreateOpus("Task 9");
+            opus9.Status = OpusStatus.Completed;
+            
+            var opus10 = CreateOpus("Task 10");
+            opus10.Status = OpusStatus.Active;
+
+
+            opera.Add(opus1);
+            opera.Add(opus2);
+            opera.Add(opus3);
+            opera.Add(opus4);
+            opera.Add(opus5);
+            opera.Add(opus6);
+            opera.Add(opus7);
+            opera.Add(opus8);
+            opera.Add(opus9);
+            opera.Add(opus10);
 
             return opera;
         }
