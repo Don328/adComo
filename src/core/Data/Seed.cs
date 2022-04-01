@@ -39,9 +39,14 @@ namespace adComo.Data
 
         private Opus CreateOpus(string title)
         {
+            var id = 0;
+            if (!isDbSeed)
+            {
+                id = opusCount + 1;
+            }
             var opus = new Opus
             {
-                OpusId = opusCount + 1,
+                OpusId = id,
                 Title = title,
                 Status = OpusStatus.New
             };
