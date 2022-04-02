@@ -1,4 +1,5 @@
 ﻿using adComo.Data;
+using adComo.Models;
 
 namespace adComo
 {
@@ -25,6 +26,21 @@ namespace adComo
                 Console.WriteLine($"Id: {opus.OpusId}");
                 Console.WriteLine($"Status: {opus.Status}");
                 Console.WriteLine();
+                Console.WriteLine("Notes:");
+                Console.WriteLine("------");
+                if (opus.Notas.Any())
+                {
+                    foreach (var nota in opus.Notas)
+                    {
+                        DisplayNota(nota);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("*None*");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
             }
         }
 
@@ -35,6 +51,21 @@ namespace adComo
                 Console.WriteLine($"Title: {opus.Title}");
                 Console.WriteLine($"Id: {opus.OpusId}");
                 Console.WriteLine($"Status: {opus.Status}");
+                Console.WriteLine();
+                Console.WriteLine("Notes:");
+                Console.WriteLine("------");
+                if (opus.Notas.Any())
+                {
+                    foreach (var nota in opus.Notas)
+                    {
+                        DisplayNota(nota);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("*None*");
+                }
+                Console.WriteLine();
                 Console.WriteLine();
             }
         }
@@ -47,6 +78,21 @@ namespace adComo
                 Console.WriteLine($"Id: {opus.OpusId}");
                 Console.WriteLine($"Status: {opus.Status}");
                 Console.WriteLine();
+                Console.WriteLine("Notes:");
+                Console.WriteLine("------");
+                if (opus.Notas.Any())
+                {
+                    foreach (var nota in opus.Notas)
+                    {
+                        DisplayNota(nota);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("*None*");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
             }
         }
 
@@ -58,7 +104,31 @@ namespace adComo
                 Console.WriteLine($"Id: {opus.OpusId}");
                 Console.WriteLine($"Status: {opus.Status}");
                 Console.WriteLine();
+                Console.WriteLine("Notes:");
+                Console.WriteLine("------");
+                if (opus.Notas.Any())
+                {
+                    foreach (var nota in opus.Notas)
+                    {
+                        DisplayNota(nota);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("*None*");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
             }
+        }
+
+        private static void DisplayNota(Nota nota)
+        {
+            Console.WriteLine($"Title: {nota.Title}");
+            Console.WriteLine($"NotaId: {nota.NotaId}");
+            Console.WriteLine($"OpusId: {nota.OpusId}");
+            Console.WriteLine($"Text: {nota.Text}");
+            Console.WriteLine();
         }
     }
 }

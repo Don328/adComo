@@ -1,5 +1,4 @@
-﻿using adComo.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace adComo.Models
 {
-    public class Opus
+    public class Nota
     {
+        public int NotaId { get; set; }
         public int OpusId { get; set; }
         public string Title { get; set; } = string.Empty;
-        public OpusStatus Status { get; set; } = 0;
-        public List<Nota> Notas { get; set; } = new List<Nota>();
+        public string Text { get; set; } = string.Empty;
     }
 }
