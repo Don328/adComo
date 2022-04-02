@@ -9,13 +9,48 @@ namespace adComo
         {
             await Task.Delay(1000);
             var state = new State();
-            DisplayNewTasks(state);
-            await Task.Delay(1000);
-            DisplayActiveTasks(state);
-            await Task.Delay(1000);
-            DisplayPendingTasks(state);
-            await Task.Delay(1000);
-            DisplayCompletedTasks(state);
+            SelectDisplay(state);
+        }
+
+        private static void SelectDisplay(State state)
+        {
+            Console.WriteLine(
+                "Select Display: [A]ll [N]ew " +
+                "[S]cheduled [P]ending " +
+                "[C]ompleted e[X]it");
+            var key = Console.ReadKey().Key;
+            Console.Clear();
+            switch(key)
+            {
+                case ConsoleKey.A:
+                    DisplayNewTasks(state);
+                    DisplayActiveTasks(state);
+                    DisplayPendingTasks(state);
+                    DisplayCompletedTasks(state);
+                    SelectDisplay(state);
+                    break;
+                case ConsoleKey.N:
+                    DisplayNewTasks(state);
+                    SelectDisplay(state);
+                    break;
+                case ConsoleKey.S:
+                    DisplayActiveTasks(state);
+                    SelectDisplay(state);
+                    break;
+                case ConsoleKey.P:
+                    DisplayPendingTasks(state);
+                    SelectDisplay(state);
+                    break;
+                case ConsoleKey.C:
+                    DisplayCompletedTasks(state);
+                    SelectDisplay(state);
+                    break;
+                case ConsoleKey.X:
+                    break;
+                default:
+                    SelectDisplay(state);
+                    break;
+            }
         }
 
         private static void DisplayNewTasks(State state)
