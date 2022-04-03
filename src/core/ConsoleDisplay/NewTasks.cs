@@ -41,5 +41,35 @@ namespace adComo.ConsoleDisplay
 
             Menu.NewTasksMenu();
         }
+
+        internal static void ChangeStatus()
+        {
+            Console.WriteLine("New tasks can be changed to active or pending.");
+            Console.WriteLine("Enter Task Id:");
+            var IdToChange = Console.ReadLine();
+            Console.WriteLine("Select new Status: [1]Active [2]Pending");
+            var newStatus = Console.ReadKey().Key;
+            Console.WriteLine();
+            var opusToChange = (from o in Program.State.Novus
+                                where o.OpusId.ToString() == IdToChange
+                                select o).FirstOrDefault();
+
+            if (opusToChange != null)
+            {
+                Program.State.Novus.Remove(opusToChange);
+
+                if (newStatus == ConsoleKey.D1)
+                {
+                    opusToChange.Status = OpusStatus.Active;
+                    Program.State.Accedant.Add(opusToChange);
+                }
+
+                if (newStatus == ConsoleKey.D2)
+                {
+                    opusToChange.Status = OpusStatus.Pending;
+                    Program.State.Pendente.Add(opusToChange);
+                }
+            }
+        }
     }
 }

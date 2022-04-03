@@ -1,4 +1,5 @@
-﻿using adComo.Models;
+﻿using adComo.Factories;
+using adComo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,26 @@ namespace adComo.ConsoleDisplay
             Console.WriteLine($"Text: {nota.Text}");
             Console.WriteLine("--------");
             Console.WriteLine();
+        }
+
+        public static void Add()
+        {
+            Console.WriteLine("Enter Task Id:");
+            var index = Console.ReadLine();
+            var opusToAnnotate = (from o in Program.State.Novus
+                                  where o.OpusId.ToString() == index
+                                  select o).FirstOrDefault();
+            if (opusToAnnotate != null)
+            {
+                Console.WriteLine("Enter a Title:");
+                var title = Console.ReadLine() ?? String.Empty;
+
+                Console.WriteLine("Enter the text of the note");
+                var text = Console.ReadLine() ?? string.Empty;
+
+                var nota = NotaFactory.CreateNota(title, text, opusToAnnotate.OpusId);
+                Program.State.AddNota(nota, opusToAnnotate.Status);
+            }
         }
     }
 }
