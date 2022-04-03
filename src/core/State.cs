@@ -11,6 +11,7 @@ namespace adComo
 {
     internal class State
     {
+        private ConsoleKey selectedMenu = 0;
         private List<Opus> opera = new List<Opus>();
         private List<Opus> novus = new List<Opus>();
         private List<Opus> accedant = new List<Opus>();
@@ -24,10 +25,16 @@ namespace adComo
             SortOpera();
         }
 
+        public ConsoleKey SelectedMenu { get { return selectedMenu; } }
         public List<Opus> Novus { get { return novus; } }
         public List<Opus> Accedant { get { return accedant; } }
         public List<Opus> Pendente { get { return pendente; } }
         public List<Opus> Completum { get { return completum; } }
+
+        public void SelectMenu(ConsoleKey key)
+        {
+            selectedMenu = key;
+        }
 
         public void AddNota(Nota nota, OpusStatus status)
         {
