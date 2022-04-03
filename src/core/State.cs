@@ -29,11 +29,42 @@ namespace adComo
         public List<Opus> Pendente { get { return pendente; } }
         public List<Opus> Completum { get { return completum; } }
 
+        public void AddNota(Nota nota, OpusStatus status)
+        {
+            switch (status)
+            {
+                case OpusStatus.New:
+                    var opusNovus = (from o in Novus
+                                     where o.OpusId == nota.OpusId
+                                     select o).FirstOrDefault();
+                    opusNovus?.Notas.Add(nota);
+                    break;
+                case OpusStatus.Active:
+                    var opusAccedant = (from o in Accedant
+                                        where o.OpusId == nota.OpusId
+                                        select o).FirstOrDefault();
+                    opusAccedant?.Notas.Add(nota);
+                    break;
+                case OpusStatus.Pending:
+                    var opusPenente = (from o in Pendente
+                                       where o.OpusId == nota.OpusId
+                                       select o).FirstOrDefault();
+                    opusPenente?.Notas.Add(nota);
+                    break;
+                case OpusStatus.Completed:
+                    var opusCompletum = (from o in Completum
+                                         where o.OpusId == nota.OpusId
+                                         select o).FirstOrDefault();
+                    opusCompletum?.Notas.Add(nota);
+                    break;
+            }
+        }
+
         private void SortOpera()
         {
             foreach (var opus in opera)
             {
-                switch(opus.Status)
+                switch (opus.Status)
                 {
                     case OpusStatus.New:
                         Novus.Add(opus);
