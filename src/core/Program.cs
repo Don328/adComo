@@ -11,9 +11,8 @@ namespace adComo
         private static State state = new State();
         internal static State State { get { return state; } }
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            await Task.Delay(1000);
             state = new State();
             Menu.MainMenu();
         }
