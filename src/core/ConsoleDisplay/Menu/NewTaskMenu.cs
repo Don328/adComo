@@ -1,4 +1,5 @@
-﻿using System;
+﻿using adComo.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace adComo.ConsoleDisplay.Menu
                     NewTasks.Show();
                     break;
                 case ConsoleKey.D7:
-                    NewTasks.ChangeStatus();
+                    NewTaskService.ChangeStatus();
                     Console.Clear();
                     NewTasks.Show();
                     break;

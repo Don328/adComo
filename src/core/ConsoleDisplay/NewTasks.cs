@@ -1,6 +1,8 @@
-﻿using adComo.ConsoleDisplay.Menu;
+﻿using adComo.ConsoleDisplay.ChangeStatus;
+using adComo.ConsoleDisplay.Menu;
 using adComo.Enums;
 using adComo.Factories;
+using adComo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,34 +45,27 @@ namespace adComo.ConsoleDisplay
             NewTaskMenu.Show();
         }
 
-        internal static void ChangeStatus()
-        {
-            Console.WriteLine("New tasks can be changed to active or pending.");
-            Console.WriteLine("Enter Task Id:");
-            var IdToChange = Console.ReadLine();
-            Console.WriteLine("Select new Status: [1]Active [2]Pending");
-            var newStatus = Console.ReadKey().Key;
-            Console.WriteLine();
-            var opusToChange = (from o in Program.State.Novus
-                                where o.OpusId.ToString() == IdToChange
-                                select o).FirstOrDefault();
+        //internal static void ChangeStatus()
+        //{
+        //    Opus opusToChange = ChangeNew.PromptForOpusId();
+        //    var newStatus = ChangeNew.PromptForNewStatus();
 
-            if (opusToChange != null)
-            {
-                if (newStatus == ConsoleKey.D1)
-                {
-                    opusToChange.Status = OpusStatus.Active;
-                    Program.State.Accedant.Add(opusToChange);
-                    Program.State.Novus.Remove(opusToChange);
-                }
-
-                if (newStatus == ConsoleKey.D2)
-                {
-                    opusToChange.Status = OpusStatus.Pending;
-                    Program.State.Pendente.Add(opusToChange);
-                    Program.State.Novus.Remove(opusToChange);
-                }
-            }
+        //    switch (newStatus)
+        //    {
+        //        case ConsoleKey.D1:
+        //            opusToChange.Status = OpusStatus.Active;
+        //            Program.State.Accedant.Add(opusToChange);
+        //            Program.State.Novus.Remove(opusToChange);
+        //            break;
+        //        case ConsoleKey.D2:
+        //            opusToChange.Status = OpusStatus.Pending;
+        //            Program.State.Pendente.Add(opusToChange);
+        //            Program.State.Novus.Remove(opusToChange);
+        //            break;
+        //        case ConsoleKey.D0:
+        //            Show();
+        //            break;
+        //    }
         }
     }
 }
