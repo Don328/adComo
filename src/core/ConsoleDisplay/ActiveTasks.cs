@@ -1,5 +1,6 @@
 ﻿using adComo.ConsoleDisplay.Menu;
 using adComo.Enums;
+using adComo.Models;
 using adComo.Services.MenuServices;
 using System;
 using System.Collections.Generic;
@@ -11,35 +12,39 @@ namespace adComo.ConsoleDisplay
 {
     internal static class ActiveTasks
     {
-        internal static void Show()
+        internal static void ShowAll()
         {
             Console.WriteLine();
             Console.WriteLine("Active Tasks:");
             Console.WriteLine("--------------------------------");
             foreach (var opus in Program.State.Accedant)
             {
-                Console.WriteLine($"Title: {opus.Title}");
-                Console.WriteLine("----------------");
-                Console.WriteLine($"Id: {opus.OpusId}");
-                Console.WriteLine($"Status: {opus.Status}");
-                Console.WriteLine();
+                ShowOne(opus);
+            }
+
+            ActiveTaskMenuService.Show();
+        }
+
+        internal static void ShowOne(Opus opus)
+        {
+            Console.WriteLine($"Title: {opus.Title}");
+            Console.WriteLine("----------------");
+            Console.WriteLine($"Id: {opus.OpusId}");
+            Console.WriteLine($"Status: {opus.Status}");
+            Console.WriteLine();
+            
+            if (opus.Notas.Any())
+            {
                 Console.WriteLine("Notes:");
                 Console.WriteLine("--------");
-                if (opus.Notas.Any())
-                {
-                    foreach (var nota in opus.Notas)
-                    {
-                        NotaDisplay.Show(nota);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("*None*");
-                }
-                Console.WriteLine();
-            }
                 
-            ActiveTaskMenuService.Show();
+                foreach (var nota in opus.Notas)
+                {
+                    NotaDisplay.Show(nota);
+                }
+            }
+
+            Console.WriteLine();
         }
 
         internal static void ChangeStatus()
@@ -56,7 +61,7 @@ namespace adComo.ConsoleDisplay
                 var newStatus = Console.ReadKey().Key;
                 Console.WriteLine();
                 Program.State.Accedant.Remove(opusToChange);
-                switch(newStatus)
+                switch (newStatus)
                 {
                     case ConsoleKey.D1:
                         Console.WriteLine("Create a note with a reason for pending");
@@ -72,14 +77,14 @@ namespace adComo.ConsoleDisplay
                         break;
                     case ConsoleKey.D0:
                         Console.Clear();
-                        Show();
+                        ShowAll();
                         break;
                 }
             }
             else
             {
                 Console.Clear();
-                Show();
+                ShowAll();
             }
         }
     }

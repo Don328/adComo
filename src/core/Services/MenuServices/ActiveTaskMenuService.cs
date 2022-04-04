@@ -30,7 +30,7 @@ namespace adComo.Services.MenuServices
                 case ConsoleKey.D8:
                     NotaDisplay.Add();
                     Console.Clear();
-                    ActiveTasks.Show();
+                    ActiveTasks.ShowAll();
                     break;
                 case ConsoleKey.D0:
                     Console.Clear();
@@ -38,7 +38,7 @@ namespace adComo.Services.MenuServices
                     break;
                 default:
                     Console.Clear();
-                    ActiveTasks.Show();
+                    ActiveTasks.ShowAll();
                     break;
             }
         }

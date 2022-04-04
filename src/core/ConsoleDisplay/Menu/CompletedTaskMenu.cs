@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace adComo.ConsoleDisplay.Menu
 {
-    internal class CompletedTaskMenu
+    internal static class CompletedTaskMenu
     {
+        internal static void Show()
+        {
+            Console.WriteLine("[0]Main Menu");
+        }
     }
 }

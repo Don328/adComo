@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace adComo.ConsoleDisplay.Menu
 {
-    internal class ActiveTaskMenu
+    internal static class ActiveTaskMenu
     {
         public static void Show()
         {
             Console.WriteLine();
 
+            // Console.WriteLine("[1]Delete");
             Console.WriteLine("[7]Change Status");
             Console.WriteLine("[8]Add Note");
             Console.WriteLine("[0]Main Menu");

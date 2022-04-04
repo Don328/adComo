@@ -34,18 +34,16 @@ namespace adComo.ConsoleDisplay
             Console.WriteLine($"Id: {opus.OpusId}");
             Console.WriteLine($"Status: {opus.Status}");
             Console.WriteLine();
-            Console.WriteLine("Notes:");
-            Console.WriteLine("--------");
+            
             if (opus.Notas.Any())
             {
+                Console.WriteLine("Notes:");
+                Console.WriteLine("--------");
+                
                 foreach (var nota in opus.Notas)
                 {
                     NotaDisplay.Show(nota);
                 }
-            }
-            else
-            {
-                Console.WriteLine("*None*");
             }
 
             Console.WriteLine();

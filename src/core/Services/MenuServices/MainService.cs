@@ -28,22 +28,22 @@ namespace adComo.Services.MenuServices
                     Show();
                     break;
                 case ConsoleKey.D2:
-                    ActiveTasks.Show();
+                    ActiveTasks.ShowAll();
                     Show();
                     break;
                 case ConsoleKey.D3:
-                    PendingTasks.Show();
+                    PendingTasks.ShowAll();
                     Show();
                     break;
                 case ConsoleKey.D4:
-                    CompletedTasks.Show();
+                    CompletedTasks.ShowAll();
                     Show();
                     break;
                 case ConsoleKey.D9:
                     NewTasks.ShowAll();
-                    ActiveTasks.Show();
-                    PendingTasks.Show();
-                    CompletedTasks.Show();
+                    ActiveTasks.ShowAll();
+                    PendingTasks.ShowAll();
+                    CompletedTasks.ShowAll();
                     Show();
                     break;
                 case ConsoleKey.D0:
