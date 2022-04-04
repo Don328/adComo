@@ -21,7 +21,7 @@ namespace adComo.ConsoleDisplay.Menu
             switch (Program.State.SelectedMenu)
             {
                 case ConsoleKey.D1:
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     Show();
                     break;
                 case ConsoleKey.D2:
@@ -37,7 +37,7 @@ namespace adComo.ConsoleDisplay.Menu
                     Show();
                     break;
                 case ConsoleKey.D9:
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     ActiveTasks.Show();
                     PendingTasks.Show();
                     CompletedTasks.Show();

@@ -23,7 +23,7 @@ namespace adComo.ConsoleDisplay.Menu
                 case ConsoleKey.D7:
                     ActiveTasks.ChangeStatus();
                     Console.Clear();
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D8:
                     NotaDisplay.Add();

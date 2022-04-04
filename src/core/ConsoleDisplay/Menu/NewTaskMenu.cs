@@ -15,6 +15,7 @@ namespace adComo.ConsoleDisplay.Menu
             Console.WriteLine("[1]Crete New Task");
             Console.WriteLine("[7]Change Status");
             Console.WriteLine("[8]Add Note");
+            Console.WriteLine("[9]Delte Task");
             Console.WriteLine("[0]Main Menu");
 
             var input = Console.ReadKey().Key;
@@ -24,17 +25,22 @@ namespace adComo.ConsoleDisplay.Menu
                 case ConsoleKey.D1:
                     NewTaskService.Create();
                     Console.Clear();
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D7:
                     NewTaskService.ChangeStatus();
                     Console.Clear();
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D8:
                     NotaDisplay.Add();
                     Console.Clear();
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
+                    break;
+                case ConsoleKey.D9:
+                    NewTaskService.Remove();
+                    Console.Clear();
+                    NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D0:
                     Console.Clear();
@@ -42,7 +48,7 @@ namespace adComo.ConsoleDisplay.Menu
                     break;
                 default:
                     Console.Clear();
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     break;
             }
         }

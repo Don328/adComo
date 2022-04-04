@@ -1,6 +1,7 @@
 ﻿using adComo.ConsoleDisplay;
 using adComo.ConsoleDisplay.ChangeStatus;
 using adComo.ConsoleDisplay.Create;
+using adComo.ConsoleDisplay.DeleteDisplay;
 using adComo.Enums;
 using adComo.Factories;
 using adComo.Models;
@@ -16,19 +17,17 @@ namespace adComo.Services
     {
         internal static void Create()
         {
-            Console.Clear();
-            Console.WriteLine("----------------");
-            Console.WriteLine("Create New Task");
-            Console.WriteLine("----------------");
-            
+            CreateTask.ShowPrompt();
+
             var title = CreateTask.PromptForTitle();
             var opus = OpusFactory.CreateOpus(title);
             Program.State.AddOpus(opus);
-            NewTasks.Show();
+            NewTasks.ShowAll();
         }
 
         internal static void ChangeStatus()
         {
+            ChangeNew.ShowPrompt();
             Opus opusToChange = ChangeNew.PromptForOpusId();
             var newStatus = ChangeNew.PromptForNewStatus();
 
@@ -45,7 +44,33 @@ namespace adComo.Services
                     Program.State.Novus.Remove(opusToChange);
                     break;
                 case ConsoleKey.D0:
-                    NewTasks.Show();
+                    break;
+            }
+        }
+
+        internal static void Remove()
+        {
+            RemoveTask.ShowPrompt();
+            Opus opusToDelete = ChangeNew.PromptForOpusId();
+            ConfirmDelete(opusToDelete);
+        }
+
+        private static void ConfirmDelete(Opus opus)
+        {
+            Console.Clear();
+            RemoveTask.ShowWarningMessage();
+            NewTasks.ShowOne(opus);
+            RemoveTask.RequestConfirmation();
+            var key = Console.ReadKey().Key;
+            switch (key)
+            {
+                case ConsoleKey.D1:
+                    Program.State.Novus.Remove(opus);
+                    break;
+                case ConsoleKey.D0:
+                    break;
+                default:
+                    ConfirmDelete(opus);
                     break;
             }
         }

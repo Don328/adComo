@@ -9,15 +9,19 @@ namespace adComo.ConsoleDisplay.ChangeStatus
 {
     internal static class ChangeNew
     {
-        internal static Opus PromptForOpusId()
+        internal static void ShowPrompt()
         {
             Console.WriteLine("New tasks can be changed to active or pending.");
             Console.WriteLine("[0]Cancel");
+        }
+
+        internal static Opus PromptForOpusId()
+        {
             Console.WriteLine("Enter Task Id:");
             var IdToChange = Console.ReadLine();
             if (IdToChange == "0" || IdToChange == null)
             {
-                NewTasks.Show();
+                NewTasks.ShowAll();
             }
             
             var opusToChange = (from o in Program.State.Novus

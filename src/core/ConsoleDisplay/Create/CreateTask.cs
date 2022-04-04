@@ -8,6 +8,14 @@ namespace adComo.ConsoleDisplay.Create
 {
     internal static class CreateTask
     {
+        internal static void ShowPrompt()
+        {
+            Console.Clear();
+            Console.WriteLine("----------------");
+            Console.WriteLine("Create New Task");
+            Console.WriteLine("----------------");
+        }
+
         internal static string PromptForTitle()
         {
 
@@ -30,7 +38,7 @@ namespace adComo.ConsoleDisplay.Create
             switch (key)
             {
                 case ConsoleKey.D0:
-                    NewTasks.Show();
+                    NewTasks.ShowAll();
                     break;
                 default:
                     PromptForTitle();
