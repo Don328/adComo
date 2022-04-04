@@ -19,6 +19,9 @@ namespace adComo.Data
             this.isDbSeed = isDbSeed;
         }
 
+        internal int OpusCount { get { return opusCount; } }
+        internal int NotaCount { get { return notaCount; } }
+
         internal List<Opus> SeedOpera()
         {
             var opera = new List<Opus>();

@@ -22,7 +22,7 @@ namespace adComo.ConsoleDisplay.Menu
             switch (input)
             {
                 case ConsoleKey.D1:
-                    // NewTasks.Add();
+                    NewTaskService.Create();
                     Console.Clear();
                     NewTasks.Show();
                     break;

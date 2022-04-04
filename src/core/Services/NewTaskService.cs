@@ -1,6 +1,8 @@
 ﻿using adComo.ConsoleDisplay;
 using adComo.ConsoleDisplay.ChangeStatus;
+using adComo.ConsoleDisplay.Create;
 using adComo.Enums;
+using adComo.Factories;
 using adComo.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,19 @@ namespace adComo.Services
 {
     internal static class NewTaskService
     {
+        internal static void Create()
+        {
+            Console.Clear();
+            Console.WriteLine("----------------");
+            Console.WriteLine("Create New Task");
+            Console.WriteLine("----------------");
+            
+            var title = CreateTask.PromptForTitle();
+            var opus = OpusFactory.CreateOpus(title);
+            Program.State.AddOpus(opus);
+            NewTasks.Show();
+        }
+
         internal static void ChangeStatus()
         {
             Opus opusToChange = ChangeNew.PromptForOpusId();

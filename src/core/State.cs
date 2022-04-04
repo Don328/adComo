@@ -11,6 +11,9 @@ namespace adComo
 {
     internal class State
     {
+        private bool hasDb = false;
+        private int opusCount = 0;
+        private int notaCount = 0;
         private ConsoleKey selectedMenu = 0;
         private List<Opus> opera = new List<Opus>();
         private List<Opus> novus = new List<Opus>();
@@ -22,6 +25,8 @@ namespace adComo
         {
             var seed = new Seed();
             opera = seed.SeedOpera();
+            opusCount = seed.OpusCount;
+            notaCount = seed.NotaCount;
             SortOpera();
         }
 
@@ -36,14 +41,33 @@ namespace adComo
             selectedMenu = key;
         }
 
+        public void AddOpus(Opus opus)
+        {
+            if (!hasDb)
+            {
+                opusCount++;
+                opus.OpusId = opusCount;
+            }
+
+            novus.Add(opus);
+        }
+
         public void AddNota(Nota nota, OpusStatus status)
         {
+            if (!hasDb)
+            {
+                notaCount++;
+                nota.NotaId = notaCount;
+            }
+
             switch (status)
             {
                 case OpusStatus.New:
                     var opusNovus = (from o in Novus
                                      where o.OpusId == nota.OpusId
                                      select o).FirstOrDefault();
+
+
                     opusNovus?.Notas.Add(nota);
                     break;
                 case OpusStatus.Active:
