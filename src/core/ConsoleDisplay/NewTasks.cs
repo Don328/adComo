@@ -3,6 +3,7 @@ using adComo.ConsoleDisplay.Menu;
 using adComo.Enums;
 using adComo.Factories;
 using adComo.Models;
+using adComo.Services.MenuServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace adComo.ConsoleDisplay
                 ShowOne(opus);
             }
 
-            NewTaskMenu.Show();
+            NewTaskMenuService.Show();
         }
 
         internal static void ShowOne(Opus opus)

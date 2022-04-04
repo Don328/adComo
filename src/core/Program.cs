@@ -4,6 +4,7 @@ using adComo.Data;
 using adComo.Enums;
 using adComo.Factories;
 using adComo.Models;
+using adComo.Services.MenuServices;
 
 namespace adComo
 {
@@ -15,7 +16,7 @@ namespace adComo
         static void Main(string[] args)
         {
             state = new State();
-            MainMenu.Show();
+            MainMenuService.Show();
         }
     }
 }

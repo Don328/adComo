@@ -1,4 +1,5 @@
-﻿using System;
+﻿using adComo.Services.MenuServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,30 +16,6 @@ namespace adComo.ConsoleDisplay.Menu
             Console.WriteLine("[7]Change Status");
             Console.WriteLine("[8]Add Note");
             Console.WriteLine("[0]Main Menu");
-
-            var input = Console.ReadKey().Key;
-            Console.WriteLine();
-            switch (input)
-            {
-                case ConsoleKey.D7:
-                    ActiveTasks.ChangeStatus();
-                    Console.Clear();
-                    NewTasks.ShowAll();
-                    break;
-                case ConsoleKey.D8:
-                    NotaDisplay.Add();
-                    Console.Clear();
-                    ActiveTasks.Show();
-                    break;
-                case ConsoleKey.D0:
-                    Console.Clear();
-                    MainMenu.Show();
-                    break;
-                default:
-                    Console.Clear();
-                    ActiveTasks.Show();
-                    break;
-            }
         }
     }
 }
