@@ -1,4 +1,5 @@
 ﻿using adComo.ConsoleDisplay;
+using adComo.ConsoleDisplay.Menu;
 using adComo.Data;
 using adComo.Enums;
 using adComo.Factories;
@@ -14,7 +15,7 @@ namespace adComo
         static void Main(string[] args)
         {
             state = new State();
-            Menu.MainMenu();
+            MainMenu.Show();
         }
     }
 }

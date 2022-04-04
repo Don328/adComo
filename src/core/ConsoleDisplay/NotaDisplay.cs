@@ -20,10 +20,20 @@ namespace adComo.ConsoleDisplay
             Console.WriteLine();
         }
 
-        public static void Add()
+        public static void Add(int? id = null)
         {
-            Console.WriteLine("Enter Task Id:");
-            var index = Console.ReadLine();
+            var index = string.Empty;
+            
+            if (id == null)
+            { 
+                Console.WriteLine("Enter Task Id:");
+                index = Console.ReadLine();
+            }
+            else
+            {
+                index = id.ToString();
+            }
+
             var opusToAnnotate = (from o in Program.State.Novus
                                   where o.OpusId.ToString() == index
                                   select o).FirstOrDefault();

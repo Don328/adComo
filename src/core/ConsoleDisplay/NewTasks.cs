@@ -1,4 +1,5 @@
-﻿using adComo.Enums;
+﻿using adComo.ConsoleDisplay.Menu;
+using adComo.Enums;
 using adComo.Factories;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace adComo.ConsoleDisplay
                 Console.WriteLine();
             }
 
-            Menu.NewTasksMenu();
+            NewTaskMenu.Show();
         }
 
         internal static void ChangeStatus()
@@ -56,18 +57,18 @@ namespace adComo.ConsoleDisplay
 
             if (opusToChange != null)
             {
-                Program.State.Novus.Remove(opusToChange);
-
                 if (newStatus == ConsoleKey.D1)
                 {
                     opusToChange.Status = OpusStatus.Active;
                     Program.State.Accedant.Add(opusToChange);
+                    Program.State.Novus.Remove(opusToChange);
                 }
 
                 if (newStatus == ConsoleKey.D2)
                 {
                     opusToChange.Status = OpusStatus.Pending;
                     Program.State.Pendente.Add(opusToChange);
+                    Program.State.Novus.Remove(opusToChange);
                 }
             }
         }
