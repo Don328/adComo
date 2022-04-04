@@ -66,6 +66,6 @@ namespace adComo.ConsoleDisplay
         //            Show();
         //            break;
         //    }
-        }
+        //}
     }
 }
