@@ -28,31 +28,74 @@ namespace adComo.Services
         internal static void ChangeStatus()
         {
             ChangeNew.ShowPrompt();
-            Opus opusToChange = ChangeNew.PromptForOpusId();
-            var newStatus = ChangeNew.PromptForNewStatus();
+            ChangeNew.PromptForOpusId();
+            var idString = GetOpusIdString();
+            var opus = GetOpusFromIdString(idString);
 
+            if (opus.OpusId == 0)
+            {
+                ChangeNew.OpusIdNotFound();
+                ChangeStatus();
+            }
+
+            ChangeNew.PromptForNewStatus();
+            var newStatus = Console.ReadKey().Key;
+            Console.WriteLine();
+            
             switch (newStatus)
             {
                 case ConsoleKey.D1:
-                    opusToChange.Status = OpusStatus.Active;
-                    Program.State.Accedant.Add(opusToChange);
-                    Program.State.Novus.Remove(opusToChange);
+                    opus.Status = OpusStatus.Active;
+                    Program.State.Accedant.Add(opus);
+                    Program.State.Novus.Remove(opus);
                     break;
                 case ConsoleKey.D2:
-                    opusToChange.Status = OpusStatus.Pending;
-                    Program.State.Pendente.Add(opusToChange);
-                    Program.State.Novus.Remove(opusToChange);
+                    opus.Status = OpusStatus.Pending;
+                    Program.State.Pendente.Add(opus);
+                    Program.State.Novus.Remove(opus);
                     break;
                 case ConsoleKey.D0:
                     break;
             }
         }
 
+        internal static Opus GetOpusFromIdString(string id)
+        {
+            var opus = (from o
+                        in Program.State.Novus
+                        where o.OpusId.ToString() == id
+                        select o)
+                        .FirstOrDefault();
+
+            if (opus == null)
+            {
+                ChangeNew.OpusIdNotFound();
+                return new Opus { OpusId = 0 };
+            }
+            else
+            {
+                return opus;
+            }
+        }
+
         internal static void Remove()
         {
-            RemoveTask.ShowPrompt();
-            Opus opusToDelete = ChangeNew.PromptForOpusId();
-            ConfirmDelete(opusToDelete);
+            RemoveTask.RemoveNewTask();
+            ChangeNew.PromptForOpusId();
+            var idString = GetOpusIdString();
+            var opus = GetOpusFromIdString(idString);
+            ConfirmDelete(opus);
+        }
+
+        private static string GetOpusIdString()
+        {
+            var IdToChange = Console.ReadLine();
+            if (IdToChange == "0" || IdToChange == null)
+            {
+                NewTasks.ShowAll();
+            }
+         
+            return IdToChange ?? string.Empty;
         }
 
         private static void ConfirmDelete(Opus opus)

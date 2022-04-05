@@ -19,35 +19,29 @@ namespace adComo.Services.MenuServices
         private static void GetResponse()
         {
             var input = Console.ReadKey().Key;
-            Console.WriteLine();
+            Console.Clear();
             switch (input)
             {
                 case ConsoleKey.D1:
                     NewTaskService.Create();
-                    Console.Clear();
                     NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D7:
                     NewTaskService.ChangeStatus();
-                    Console.Clear();
                     NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D8:
                     NotaDisplay.Add();
-                    Console.Clear();
                     NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D9:
                     NewTaskService.Remove();
-                    Console.Clear();
                     NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D0:
-                    Console.Clear();
                     MainMenuService.Show();
                     break;
                 default:
-                    Console.Clear();
                     NewTasks.ShowAll();
                     break;
             }

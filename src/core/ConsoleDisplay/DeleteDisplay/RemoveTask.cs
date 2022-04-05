@@ -8,9 +8,19 @@ namespace adComo.ConsoleDisplay.DeleteDisplay
 {
     internal static class RemoveTask
     {
-        internal static void ShowPrompt()
+        internal static void RemoveNewTask()
         {
             Console.WriteLine("Chose a task form the New Tasks list to remove");
+        }
+
+        internal static void RemoveActiveTask()
+        {
+            Console.WriteLine("Chose a task form the Active Tasks list to remove");
+        }
+
+        internal static void RemovePendingTask()
+        {
+            Console.WriteLine("Chose a task form the Pending Tasks list to remove");
         }
 
         internal static void ShowWarningMessage()

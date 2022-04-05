@@ -1,4 +1,5 @@
 ﻿using adComo.Models;
+using adComo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,51 +16,20 @@ namespace adComo.ConsoleDisplay.ChangeStatus
             Console.WriteLine("[0]Cancel");
         }
 
-        internal static Opus PromptForOpusId()
+        internal static void PromptForOpusId()
         {
             Console.WriteLine("Enter Task Id:");
-            var IdToChange = Console.ReadLine();
-            if (IdToChange == "0" || IdToChange == null)
-            {
-                NewTasks.ShowAll();
-            }
-            
-            var opusToChange = (from o in Program.State.Novus
-                                where o.OpusId.ToString() == IdToChange
-                                select o).FirstOrDefault();
-            
-            if (opusToChange == null)
-            {
-                return OpusIdNotFound();
-            }
-            else
-            {
-                return opusToChange;
-            }
         }
 
-        internal static ConsoleKey PromptForNewStatus()
+        internal static void PromptForNewStatus()
         {
             Console.WriteLine("Select new Status: [1]Active [2]Pending [0]Cancel");
-            var newStatus = Console.ReadKey().Key;
-            Console.WriteLine();
-            if (newStatus != ConsoleKey.D1
-                && newStatus != ConsoleKey.D2
-                && newStatus != ConsoleKey.D0)
-            {
-                Console.WriteLine("Please select one of the available options.");
-                Console.WriteLine();
-                PromptForNewStatus();
-            }
-         
-            return newStatus;
         }
 
-        internal static Opus OpusIdNotFound()
+        internal static void OpusIdNotFound()
         {
             Console.WriteLine("Id not found");
             Console.WriteLine("You must enter a vaid Id from a task in the New Tasks list");
-            return PromptForOpusId();
         }
     }
 }

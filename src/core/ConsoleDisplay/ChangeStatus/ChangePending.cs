@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace adComo.ConsoleDisplay.ChangeStatus
 {
-    internal class ChangePending
+    internal static class ChangePending
     {
+        internal static void ShowPrompt()
+        {
+            Console.WriteLine("Pending Tasks can be changed to active");
+            Console.WriteLine("[0]Cancel");
+        }
+
+        internal static void PromptForOpusId()
+        {
+            Console.WriteLine("Enter Task Id:");
+        }
+
+        internal static void OpusIdNotFound()
+        {
+            Console.WriteLine("Id not found");
+            Console.WriteLine("Please enter a valid Task Id from the Pending Tasks list");
+        }
     }
 }
