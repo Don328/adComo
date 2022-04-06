@@ -1,6 +1,7 @@
 ﻿using adComo.ConsoleDisplay;
 using adComo.ConsoleDisplay.ChangeStatus;
 using adComo.ConsoleDisplay.DeleteDisplay;
+using adComo.ConsolePrompts;
 using adComo.Enums;
 using adComo.Models;
 using System;
@@ -26,45 +27,17 @@ namespace adComo.Services
                 ChangeStatus();
             }
 
-            ChangeActive.PromptForNewStatus();
-            var newStatus = Console.ReadKey().Key;
-            Console.WriteLine();
-
-            switch (newStatus)
-            {
-                case ConsoleKey.D1:
-                    opus.Status = OpusStatus.Pending;
-                    Program.State.Pendente.Add(opus);
-                    Program.State.Accedant.Remove(opus);
-                    break;
-                case ConsoleKey.D2:
-                    opus.Status = OpusStatus.Completed;
-                    Program.State.Completum.Add(opus);
-                    Program.State.Accedant.Remove(opus);
-                    break;
-                case ConsoleKey.D0:
-                    break;
-            }
+            ChangeActive.NewStatusPromptMessage();
+            ActiveTaskPrompt.NewStatus(opus);
         }
 
         internal static void Remove()
         {
             RemoveTask.RemoveActiveTask();
             ChangeActive.PromptForOpusId();
-            var idString = GetOpusIdString();
+            var idString = ActiveTaskPrompt.GetOpusIdString();
             var opus = GetOpusFromIdString(idString);
-            ConfirmDelete(opus);
-        }
-
-        private static string GetOpusIdString()
-        {
-            var IdToChange = Console.ReadLine();
-            if (IdToChange == "0" || IdToChange == null)
-            {
-                ActiveTasks.ShowAll();
-            }
-
-            return IdToChange ?? string.Empty;
+            ActiveTaskPrompt.ConfirmDelete(opus);
         }
 
         private static Opus GetOpusFromIdString(string id)
@@ -83,26 +56,6 @@ namespace adComo.Services
             else
             {
                 return opus;
-            }
-        }
-
-        private static void ConfirmDelete(Opus opus)
-        {
-            Console.Clear();
-            RemoveTask.ShowWarningMessage();
-            ActiveTasks.ShowOne(opus);
-            RemoveTask.RequestConfirmation();
-            var key = Console.ReadKey().Key;
-            switch (key)
-            {
-                case ConsoleKey.D1:
-                    Program.State.Accedant.Remove(opus);
-                    break;
-                case ConsoleKey.D0:
-                    break;
-                default:
-                    ConfirmDelete(opus);
-                    break;
             }
         }
     }

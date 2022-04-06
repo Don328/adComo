@@ -25,7 +25,7 @@ namespace adComo.ConsoleDisplay.ChangeStatus
             Console.WriteLine("[0]Cancel");
         }
 
-        internal static void PromptForNewStatus()
+        internal static void NewStatusPromptMessage()
         {
             Console.WriteLine("Select new Status: [1]Pending [2]Completed [0]Cancel");
 
