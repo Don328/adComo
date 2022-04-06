@@ -13,7 +13,7 @@ namespace adComo.ConsoleDisplay
     {
         internal static void ShowAll()
         {
-            Console.WriteLine();
+            Console.Clear();
             Console.WriteLine("Pending Tasks:");
             Console.WriteLine("--------------------------------");
             foreach (var opus in Program.State.Pendente)
@@ -26,6 +26,7 @@ namespace adComo.ConsoleDisplay
 
         internal static void ShowOne(Opus opus)
         {
+            Console.Clear();
             Console.WriteLine($"Title: {opus.Title}");
             Console.WriteLine("----------------");
             Console.WriteLine($"Id: {opus.OpusId}");

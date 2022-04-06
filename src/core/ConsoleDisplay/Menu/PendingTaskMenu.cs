@@ -10,9 +10,10 @@ namespace adComo.ConsoleDisplay.Menu
     {
         internal static void Show()
         {
-            // Console.WriteLine("[1]Delete");
+            Console.WriteLine();
             Console.WriteLine("[7]Change Status");
-            // Console.WriteLine("[8]Add Note");
+            Console.WriteLine("[8]Add Note");
+            Console.WriteLine("[9]Delete");
             Console.WriteLine("[0]Main Menu");
         }
     }

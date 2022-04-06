@@ -9,10 +9,9 @@ namespace adComo.ConsoleDisplay.Menu
 {
     internal static class ActiveTaskMenu
     {
-        public static void Show()
+        internal static void Show()
         {
             Console.WriteLine();
-
             Console.WriteLine("[7]Change Status");
             Console.WriteLine("[8]Add Note");
             Console.WriteLine("[9]Delete Task");

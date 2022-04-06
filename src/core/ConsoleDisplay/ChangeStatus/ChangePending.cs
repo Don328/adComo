@@ -24,5 +24,11 @@ namespace adComo.ConsoleDisplay.ChangeStatus
             Console.WriteLine("Id not found");
             Console.WriteLine("Please enter a valid Task Id from the Pending Tasks list");
         }
+
+        internal static void ConfirmStatusChange()
+        {
+            Console.WriteLine("Change status to Active?");
+            Console.WriteLine("[1]Confirm [0]Cancel");
+        }
     }
 }

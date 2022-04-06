@@ -19,7 +19,6 @@ namespace adComo.Services.MenuServices
         private static void GetResponse()
         {
             var input = Console.ReadKey().Key;
-            Console.Clear();
             switch (input)
             {
                 case ConsoleKey.D1:

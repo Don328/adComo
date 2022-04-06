@@ -14,6 +14,7 @@ namespace adComo.ConsoleDisplay
     {
         internal static void ShowAll()
         {
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine("Active Tasks:");
             Console.WriteLine("--------------------------------");
@@ -27,6 +28,7 @@ namespace adComo.ConsoleDisplay
 
         internal static void ShowOne(Opus opus)
         {
+            Console.Clear();
             Console.WriteLine($"Title: {opus.Title}");
             Console.WriteLine("----------------");
             Console.WriteLine($"Id: {opus.OpusId}");
@@ -83,7 +85,6 @@ namespace adComo.ConsoleDisplay
             }
             else
             {
-                Console.Clear();
                 ShowAll();
             }
         }

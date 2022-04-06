@@ -47,25 +47,6 @@ namespace adComo.Services
             }
         }
 
-        internal static Opus GetOpusFromIdString(string id)
-        {
-            var opus = (from o
-                        in Program.State.Accedant
-                        where o.OpusId.ToString() == id
-                        select o)
-                        .FirstOrDefault();
-
-            if (opus == null)
-            {
-                ChangeActive.OpusIdNotFound();
-                return new Opus { OpusId = 0 };
-            }
-            else
-            {
-                return opus;
-            }
-        }
-
         internal static void Remove()
         {
             RemoveTask.RemoveActiveTask();
@@ -84,6 +65,25 @@ namespace adComo.Services
             }
 
             return IdToChange ?? string.Empty;
+        }
+
+        private static Opus GetOpusFromIdString(string id)
+        {
+            var opus = (from o
+                        in Program.State.Accedant
+                        where o.OpusId.ToString() == id
+                        select o)
+                        .FirstOrDefault();
+
+            if (opus == null)
+            {
+                ChangeActive.OpusIdNotFound();
+                return new Opus { OpusId = 0 };
+            }
+            else
+            {
+                return opus;
+            }
         }
 
         private static void ConfirmDelete(Opus opus)

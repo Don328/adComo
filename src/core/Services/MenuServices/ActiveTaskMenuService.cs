@@ -19,11 +19,10 @@ namespace adComo.Services.MenuServices
         private static void GetResponse()
         {
             var input = Console.ReadKey().Key;
-            Console.Clear();
             switch (input)
             {
                 case ConsoleKey.D7:
-                    ActiveTasks.ChangeStatus();
+                    ActiveTaskService.ChangeStatus();
                     NewTasks.ShowAll();
                     break;
                 case ConsoleKey.D9:

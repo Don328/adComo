@@ -10,6 +10,7 @@ namespace adComo.ConsoleDisplay.Menu
     {
         internal static void Show()
         {
+            Console.WriteLine();
             Console.WriteLine("[0]Main Menu");
         }
     }
